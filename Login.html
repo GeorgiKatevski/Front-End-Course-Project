@@ -1,0 +1,35 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Login</title>
+        <link rel="stylesheet" href=".\styles\style.css">
+    </head>
+    <body>
+        <div class="box">
+            <h2>Login</h2>
+            <!--Указва къде трябва да се изпрати информацията.-->
+            <form action="index.html" id="login-form" method="POST">
+                <div class="inputBox">  
+                    <input type="text" id="Username" name="Username" required>
+                    <label for="Username">Username </label>
+                </div>
+                <div class="inputBox">
+                    <input type="password" id="Password" name="Username" required>
+                    <label for="Password">Password</label>
+                </div>
+
+                <div id="error">Invalid username or password</div>
+                <input type="submit" value="Submit">
+                <a href="register.html" title="Create account" class="auth-link">Create account</a>
+             </form>
+        </div>
+        <script scr="https://www.gstatic.com/firebasejs/7.7.0/firebase-auth.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/7.7.0/firebase.js"></script>
+   
+            
+       <script src="script/script.js"></script>
+     </body>
+     
+</html>

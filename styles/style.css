@@ -1,0 +1,125 @@
+body
+{
+    margin:0;
+    padding:0;
+    /*tip na shrifta*/
+    font-family:sans-serif;
+    background: url(../imgs/mansion1.jpg) repeat center center fixed; 
+    background-size:cover;
+    /*golemina na elementa*/
+    box-sizing:border-box;  
+}
+
+#alert{
+    background-color: green;
+    color: #fff;
+    background-size: 10px;
+    text-align: center;
+    padding: 10px;
+    margin-top: 5px;
+    display: none;
+}
+
+#error{
+    color:red;
+    margin: 10px;
+    display: none;
+}
+.article ul{
+    color: rebeccapurple;
+}
+
+
+.box
+{
+    position: absolute;
+    top:50%;
+    left:50%;  
+    /*pozvolqva razmestvane*/
+    transform:translate(-50%,-50%);
+    width:20%;
+    padding:40px;
+    background:rgba(0,0,0,.8);
+    box-shadow:0 15px 25px rgba(0,0,0,.5);
+    border-radius:10px;
+}
+
+.box h2
+{
+    margin: 0 0 30px;
+    padding:0;
+    color:#fff;
+    text-align:center;
+}
+
+.box .inputBox
+{
+    position: relative;
+}
+.box .inputBox input
+{
+    width:100%;
+    padding: 10px 0;
+    font-size: 16px;
+    color:#fff;
+    letter-spacing:1px;
+    margin-bottom:30px;
+    border:none;
+    border-bottom:1px solid #fff;
+    outline:none;
+    /*pole*/
+    background: transparent;
+}
+
+.box .inputBox label
+{
+    position:absolute;
+    top: 0;
+    left: 0;
+    padding: 10px 0;
+    font-size: 16px;
+    color:#fff;
+    pointer-events: none;
+    /*vremeto otmestvane na label-a*/
+    transition: .5s;
+}
+inpur > label
+input > div > label
+/*focus selector is used to select element that has focus*/
+/*valid selector selects form elements with a value that
+ validates according to the elements settings*/
+.box .inputBox input:focus > label,
+.box .inputBox input:valid ~ label
+{
+    top:-18px;
+    left:0;
+    color:#00FFFF ;
+    font-size: 12px;
+}
+.box input[type="submit"]
+{
+    background:transparent;
+    border:none;
+    outline:none;
+    color:#fff;
+    background: #00FFFF ;
+    padding: 10px 20px;
+    cursor:pointer;
+    border-radius: 5px;
+}
+.auth-link  {
+    line-height: 80%;
+    font-size: 1rem;
+    color: #00FFFF ;
+    text-decoration: none;
+    margin-top: 1.75rem;
+    border-radius: 15px;
+}
+.hero{
+    height:100vh;
+    background-image:linear-gradient(rgba(0,0,0,0.8),rgba(0,0,0,0.6)),url(../imgs/mansion1.jpg);
+    background-position:center;
+    background-size:cover;
+    overflow-x:hidden;
+    position:relative;
+}

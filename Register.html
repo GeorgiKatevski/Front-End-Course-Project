@@ -1,0 +1,37 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Registration</title>
+        <link rel="stylesheet" href=".\styles\style.css">
+    </head>
+    <body>
+    <div class="box">
+        <h2>Register</h2>
+        <form id="register-form" method="index.html" action="POST">
+            <div class="inputBox">
+                <input type="text" id="Username" name="Username" required>
+                <label for="Username">Username </label>
+            </div>
+            <div class="inputBox">
+                    <input type="text" id="Email" name="Email" required>
+                    <label for="Email">Email </label>
+            </div>
+            <div class="inputBox">
+                    <input type="password" id="Password" name="Password" required>
+                    <label for="Password">Password</label>
+                </div>
+            <div id="error">Invalid registration</div>
+            <input type="submit" name="" value="Submit"> 
+            <div id="alert">Successful registration</div>
+        </form>    
+    </div>
+        
+    <script scr="https://www.gstatic.com/firebasejs/7.7.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.7.0/firebase.js"></script>
+    
+    <script src="script\script.js"></script>
+    </body>
+
+</html>

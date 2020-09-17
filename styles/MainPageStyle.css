@@ -1,0 +1,324 @@
+.container{
+    width: 100%;
+    height: 100px;
+    margin:auto;
+    overflow: hidden;
+}
+
+body
+{
+    margin:0;
+    padding:0;
+    font-family:sans-serif;
+    background: linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.6)),url(../imgs/mansion1.jpg) repeat center center fixed; 
+    background-size:cover;
+    box-sizing:border-box;  
+}
+
+header{
+    background:rgba(0,0,0,.8);
+    box-shadow:0 15px 25px rgba(0,0,0,.5);
+    padding-top: 30px;
+    margin: auto;
+    overflow: hidden;
+    
+    border-bottom: #00FFFF solid 1px;
+}
+
+/*nai-otdolu*/
+#page-container{
+    position: relative;
+    /*duljina nai-otdolu*/
+    min-height: 100vh;
+}
+/*butonite*/
+.navigation{
+    position: relative;
+    width: 20%;
+    /*ako e poveche shte otide nadqsno*/
+    left: 5%;   
+
+    bottom: 28%;
+/*Displays an element as a block-level flex container*/
+/*Дефинира поведението на елемента*/
+    display: flex;
+    /* controls what happens to content that is too big to fit into an area.*/
+/*- The overflow is clipped, and the rest of the content will be invisible*/
+    overflow: hidden;
+   /* The flex-wrap CSS property sets whether flex items are forced onto one line or can wrap onto multiple lines*/
+   flex-wrap: wrap;
+}
+
+.article .bar{
+    /*minimalna duljina na butonite*/
+    min-width: 10%;
+/*shirochina*/
+    height: 10px;
+       /*granica*/
+    border: 2px solid white;
+/*bottom 60*/
+    margin: 6px 6px 60px 6px;
+    /*The cursor CSS property sets the type of mouse cursor, if any, to show when the mouse pointer is over an element.*/
+   
+    
+}
+
+
+
+.bar:hover{
+    /*kogato si slojish mishkata vurhu butona da si smenq cveta*/
+    background: white;
+    cursor: pointer;
+}
+
+/*butoncheta nad snimkata i e redno prosto da sa skriti*/
+input[name="r"]{
+    
+    position: absolute;
+    visibility: hidden;
+}
+
+/*nedvijimi*/
+.container h1{
+color:white;
+    margin-bottom: 10px;
+}
+/* imoti*/
+header span{
+    color:#00FFFF;
+}
+
+
+/*login home register*/
+.container a{
+    text-decoration: none;
+    font-size: 16px;
+    color: #ffffff;
+    
+    /*да станат големи букви*/
+    text-transform: uppercase;
+    margin-bottom: 5px;
+}
+
+header a:hover{
+    color:#00FFFF;
+}
+
+ul{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    text-decoration: none;
+}
+
+header ul{
+    float: right;
+}
+
+header ul li{
+    float: left;
+    margin: 5px
+}
+
+.article {
+    overflow: auto;
+}
+
+table{
+    width: 40%;
+}
+
+#slide-container{
+    position: relative;
+    bottom: 20px;
+    right: 10;
+    
+} 
+
+#slide-container h2{
+    padding-right: 10px;
+}   
+
+th{
+    padding-bottom: 30px;
+    /*pokazva ako ne se napulni ot koq strana da stoi*/
+    text-align: left;
+    font-size: 20px;
+    color:white;
+   
+}
+
+#content h3{
+    font-size: 35px;
+    margin-left:  10px;
+    color:#00FFFF;
+}
+
+#content h4{
+    margin-top: 30px;
+    font-size: 20px;
+    color:#00FFFF;    
+}
+
+#content{
+    padding-bottom: 2.5rem;
+}
+
+#table-text{
+    color:white;
+}
+/*tablicata*/
+td{
+    border-bottom   : 1px solid #ddd;
+    margin-right: 20px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    /*The text-align property specifies the horizontal alignment of text in an element.*/
+    text-align: left;
+    font-size: 20px;
+    color:white;
+}
+
+table{
+    width: 40%;
+}
+
+img{
+    float: left;
+    margin-right: 100px;
+    margin-left:0px;
+    width: 40%;
+    margin-bottom: 50px;
+  height:auto;
+}
+
+#buy-button{
+   margin-top: 30px;
+   margin-bottom: 20px;
+   border-radius: 80%;
+   width: 120px;
+   height: 70px;
+   font-weight: bold;
+   font-size: medium;
+   border-color: white;
+   border-style: solid;
+   background: linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.6));
+   text-align: center;
+  color:white;
+}
+
+#image-container{
+    position: relative;
+    width: 100%;
+}
+
+div.footer {
+    position: absolute; 
+    bottom: 0;
+    width: 100%;
+    height: 2.5rem;  
+    padding: 10px;
+    color: white;
+    background-color: black;
+  }
+  
+div.article {
+    margin: 5px;
+    padding: 10px;
+}
+
+
+
+/* Conract Form Start */
+.contact__text{
+    width: 50%;
+    margin:10px 50px 20px;
+    color:#00FFFF;
+}
+
+.container-contact{
+    text-align: center;
+}
+
+/* Form grid */
+.form-grid{
+    padding: 10px ;
+    color:#00FFFF;
+}
+
+.form-grid li{
+    /*Displays an element as a block element (like <p>).
+     It starts on a new line, and takes up the whole width
+    */
+    display: block;
+    padding: 10px 0;
+    margin-right: 30px;
+}
+.form-grid li label{
+    display: block;
+    padding: 0 0 5px 0;
+    font-size: 14px;
+}
+.form-grid li input,
+.form-grid li select,
+.form-grid li textarea{
+    width: 100%;
+    height: 30px;
+    padding: 0 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 14px;
+    background:#F5F5DC;
+}
+
+.form-grid li textarea{
+    min-height: 60px;
+    max-height: 90px;
+    padding: 10px;
+}
+
+.form-grid .btn{
+    margin: 0;
+    font-size: 16px;
+    background:    #00FFFF;;
+    border-color: #ccc;
+}
+
+.contact__text__list_item{
+    text-align: left;
+    margin-bottom: 3px;
+}
+.contact__text__list{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    text-decoration: none;
+    margin-bottom: 10px;
+}
+   
+.btn{
+    position: relative;
+    display: inline-block;
+    /*allows to set a width and height on th element*/
+    margin-top: 10px;
+    padding: 12px 40px;
+    border: 1px solid #000;
+    border-radius: 30px;
+    color: #000;
+
+    font: 300 18px/1.2 'Raleway', sans-serif;
+    /*property specifies the decoration added to text, and is a shorthand property for:
+    */
+    text-decoration: none;
+    transition: all 250ms ease-in-out;
+}
+
+#contact_h{
+    font-weight: 300;
+    font-size: 38px;
+    margin: 30px 0px 0px 0px;
+    
+    line-height: 120%;
+    font-family: 'Open sans', 'sans-serif';
+}
+
