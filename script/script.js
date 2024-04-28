@@ -23,10 +23,12 @@ var firebaseConfig = {
 //reference represents a specific location in your Database and can be used for reading or writing data to that Database location.
 // Reference to your Firebase database
 const database = firebase.database();
+var houseRef = firebase.database().ref('houses');
 
 // Reference to the "users" node
-
-
+var houseForm = document.getElementById("house-form");
+  if(houseForm != null)
+  document.getElementById("house-form").addEventListener('submit', addHouse);
 
 //chrez tazi ref ti pozvolqva da chetesh i pishesh ot bazata  
 var ref = firebase.database().ref('users');
@@ -176,7 +178,29 @@ function savaData(name, email, password){
    document.getElementById("login-form").reset();
  }
 
-function showData(){
-   
+ function addHouse(e){
+    //Prevent a link from opening the URL
+    e.preventDefault();
+//checkbox
+    var title =  getValueById("title");
+    var description =  getValueById("description");
+    var location =  getValueById("location");
+    var price =  getValueById("price");
+//errordata
 
+    houseRef.push({
+        title:title,
+        description:description,
+        location:location,
+        price:price
+    });
+
+   // document.getElementById('alert').style.display = "block";
+ 
+    setTimeout(function(){
+        document.getElementById('alert').style.display = "none";
+    }, 2000);
+
+    document.getElementById("house-form").reset();
+        
 }

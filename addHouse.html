@@ -79,12 +79,21 @@
         input[type="submit"]:hover {
             background: #00CED1;
         }
+        #alert {
+            background-color: green;
+            color: #fff;
+            text-align: center;
+            padding: 10px;
+            margin-top: 10px;
+            border-radius: 5px;
+            display: none;
+        }
     </style>
 </head>
 <body>
     <div class="container">
         <h2>Add House for Sale</h2>
-        <form id="houseForm" action="#" method="post" enctype="multipart/form-data">
+        <form action="index.html" id="house-form" method="POST">
             <label for="title">Title:</label>
             <input type="text" id="title" name="title" required>
             <label for="description">Description:</label>
@@ -93,9 +102,15 @@
             <input type="text" id="price" name="price" required>
             <label for="location">Location:</label>
             <input type="text" id="location" name="location" required>
-            <input type="file" id="image" name="image" accept="image/*" multiple required>
+            <input type="file" id="image" name="image" accept="image/*">
             <input type="submit" value="Submit">
+            <div id="alert">Successful registration</div>
         </form>
+        
     </div>
+    <script scr="https://www.gstatic.com/firebasejs/7.7.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.7.0/firebase.js"></script>
+    
+    <script src="script\script.js"></script>
 </body>
 </html>
