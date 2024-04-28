@@ -21,6 +21,13 @@ var firebaseConfig = {
   //
 //ref za da moga da pravq zaqvki 
 //reference represents a specific location in your Database and can be used for reading or writing data to that Database location.
+// Reference to your Firebase database
+const database = firebase.database();
+
+// Reference to the "users" node
+
+
+
 //chrez tazi ref ti pozvolqva da chetesh i pishesh ot bazata  
 var ref = firebase.database().ref('users');
   var regForm =  document.getElementById("register-form");
@@ -144,7 +151,7 @@ function savaData(name, email, password){
             var obj = users[key];
             if(obj.name == username && obj.password == password){
                 window.location.href = "index.html";
-//vlizame kum stranicata
+                //vlizame kum stranicata
                 return;
             }
         }
@@ -169,3 +176,7 @@ function savaData(name, email, password){
    document.getElementById("login-form").reset();
  }
 
+function showData(){
+   
+
+}
