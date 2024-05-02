@@ -24,13 +24,17 @@ var firebaseConfig = {
 // Reference to your Firebase database
 const database = firebase.database();
 var houseRef = firebase.database().ref('houses');
+alert(houseRef);
+    // The current page is index2.html
+
+
 
 // Reference to the "users" node
 var houseForm = document.getElementById("house-form");
   if(houseForm != null)
   document.getElementById("house-form").addEventListener('submit', addHouse);
 
-//chrez tazi ref ti pozvolqva da chetesh i pishesh ot bazata  
+//chrez tazi ref ti pozvolqva da chetesh i  pishesh ot bazata  
 var ref = firebase.database().ref('users');
   var regForm =  document.getElementById("register-form");
 //attaching an event handler to a specified element
@@ -179,28 +183,54 @@ function savaData(name, email, password){
  }
 
  function addHouse(e){
-    //Prevent a link from opening the URL
+    // Prevent the default form submission behavior
     e.preventDefault();
-//checkbox
-    var title =  getValueById("title");
-    var description =  getValueById("description");
-    var location =  getValueById("location");
-    var price =  getValueById("price");
-//errordata
 
-    houseRef.push({
-        title:title,
-        description:description,
-        location:location,
-        price:price
+    // Get form data
+    var title = getValueById("title");
+    var description = getValueById("description");
+    var location = getValueById("location");
+    var price = getValueById("price");
+    var imageFile = document.getElementById('image').files[0]; // Get the uploaded image file
+
+    // Generate a unique filename for the image in GCS
+    var imageName = 'house_image_' + Date.now() + '_' + imageFile.name;
+
+    // Create a reference to the root of your GCS bucket
+    var storageRef = firebase.storage().ref();
+
+    // Upload the image file to GCS
+    var imageRef = storageRef.child(imageName);
+    imageRef.put(imageFile).then(function(snapshot) {
+        console.log('Image uploaded successfully!');
+
+        // Get the download URL for the uploaded image
+        imageRef.getDownloadURL().then(function(downloadURL) {
+            console.log('File available at', downloadURL);
+
+            // Push data to Firebase Database including the image URL
+            houseRef.push({
+                title: title,
+                description: description,
+                location: location,
+                price: price,
+                imageUrl: downloadURL // Add image URL to the database
+            });
+
+            // Reset form
+            document.getElementById("house-form").reset();
+            
+            // Show success message
+            document.getElementById('alert').style.display = "block";
+            setTimeout(function(){
+                document.getElementById('alert').style.display = "none";
+            }, 2000);
+        });
+    }).catch(function(error) {
+        console.error('Error uploading image:', error);
     });
-
-   // document.getElementById('alert').style.display = "block";
- 
-    setTimeout(function(){
-        document.getElementById('alert').style.display = "none";
-    }, 2000);
-
-    document.getElementById("house-form").reset();
         
 }
+
+  // Call displayProperties function to retrieve and display properties data
+  

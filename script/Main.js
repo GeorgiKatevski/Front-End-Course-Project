@@ -77,3 +77,6 @@ function changeImage4_2(e){
 
     document.getElementById("img1").src = "./imgs/Blok6.jpg";
 }
+
+
+

@@ -1,0 +1,46 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>check</title>
+    <link rel="stylesheet" href=".\styles\MainPageStyle.css">
+</head>
+<body>        
+    <header>
+        <div class="container">
+            <h1>Недвижими <span>имоти</span></h1>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="Contact.html">Contact</a></li>
+                    <li><a href="Login.html">Login</a></li>
+                    <li><a href="Register.html">Register</a></li>
+                    <li><a href="addHouse.html">Add</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div id="houses-container">
+        <!-- Houses will be dynamically inserted here -->
+    </div>
+
+    <div class="pagination">
+        <button id="prevPageBtn">Previous</button>
+        <span id="pageNumber">1</span>
+        <button id="nextPageBtn">Next</button>
+    </div>
+    <footer>
+        <div class="copyright">Copyright © 2024 RealProperty company. All rights reserved.</div>
+        <div class="bottom-buttons">
+            <button>Contact</button>
+            <button>Help</button>
+        </div>
+    </footer>
+    <script scr="https://www.gstatic.com/firebasejs/7.7.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.7.0/firebase.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.1.1/firebase-storage.js"></script>
+    <script src="script\scriptSecond.js"></script>
+</body>
+</html>

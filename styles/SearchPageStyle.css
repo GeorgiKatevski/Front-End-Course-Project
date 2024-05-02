@@ -1,0 +1,98 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+    background: url(../imgs/mansion1.jpg) repeat center center fixed; 
+    background-size: cover;
+    box-sizing: border-box;  
+}
+
+.container {
+    width: 80%;
+    margin: 0 auto;
+    padding: 20px 0;
+}
+
+header, footer {
+    background-color: rgba(0,0,0,.8);
+    color: #fff;
+    text-align: center;
+    padding: 10px 0;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+li {
+    display: inline-block;
+    margin-right: 20px;
+}
+
+a {
+    text-decoration: none;
+    color: #fff;
+}
+
+a:hover {
+    color: #00FFFF;
+}
+
+.search-container {
+    width: 80%;
+    margin: 50px auto;
+    text-align: center;
+}
+
+.search-container h2 {
+    margin-bottom: 20px;
+    color: #00FFFF;
+}
+
+.input-container {
+    display: flex;
+    justify-content: center;
+}
+
+.input-container input {
+    width: 200px;
+    height: 30px;
+    padding: 5px;
+    margin: 0 10px;
+    border: none;
+    border-bottom: 1px solid #fff;
+    outline: none;
+    background: white;
+    color: black;
+}
+
+.input-container button {
+    height: 40px;
+    padding: 0 20px;
+    background-color: #00FFFF;
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.input-container button:hover {
+    background-color: #00CED1;
+}
+
+footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background-color: rgba(0,0,0,.8);
+    color: #fff;
+    text-align: center;
+    padding: 10px 0;
+}
+
+footer p {
+    margin: 0;
+}
+
