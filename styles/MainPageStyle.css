@@ -416,3 +416,31 @@ div.article {
 .bottom-buttons button:hover {
     background-color: #00CED1;
 }
+
+button {
+    padding: 10px 20px;
+    background-color: #00FFFF; /* Button background color */
+    border: 1px solid #fff; /* Button border */
+    color: #fff; /* Button text color */
+    border-radius: 5px; /* Button border radius */
+    cursor: pointer; /* Cursor style on hover */
+    transition: background-color 0.3s; /* Smooth transition on hover */
+    margin-top: 10px; /* Adjust margin as needed */
+}
+
+button:hover {
+    background-color: #00CED1; /* Button background color on hover */
+}
+
+.image-container {
+    position: relative;
+    width: 300px; /* Adjust as needed */
+    height: 200px; /* Adjust as needed */
+}
+
+.image-container img {
+    left : 30%;
+    position: absolute;
+    opacity: 0;
+    transition: opacity 0.1s ease;
+}

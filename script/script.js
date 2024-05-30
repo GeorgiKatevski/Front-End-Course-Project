@@ -13,7 +13,7 @@ var firebaseConfig = {
   // Initialize Firebase
   firebase.initializeApp(firebaseConfig);
   firebase.analytics();
-
+  var imageUrls = [];
   //Registration start
   //firebase.database() can be called with no arguments to access the default app's
   // Database service or as firebase.database(app) to 
@@ -157,7 +157,7 @@ function savaData(name, email, password){
             var obj = users[key];
             if(obj.name == username && obj.password == password){
                 window.location.href = "index.html";
-                //vlizame kum stranicata
+
                 return;
             }
         }
@@ -181,56 +181,124 @@ function savaData(name, email, password){
 
    document.getElementById("login-form").reset();
  }
+ // Call displayProperties function to retrieve and display properties data
+  // Function to upload a single file
+  function uploadFile(file) {
+    return new Promise((resolve, reject) => {
+        var imageName = 'house_image_' + Date.now() + '_' + file.name;
+        var imageRef = storageRef.child(imageName);
 
+        imageRef.put(file).then(snapshot => {
+            console.log('Image uploaded successfully!');
+            return imageRef.getDownloadURL();
+        }).then(downloadURL => {
+            console.log('File available at', downloadURL);
+            resolve(downloadURL);
+        }).catch(error => {
+            console.error('Error uploading image:', error);
+            reject(error);
+        });
+    });
+}
  function addHouse(e){
     // Prevent the default form submission behavior
     e.preventDefault();
-
     // Get form data
     var title = getValueById("title");
     var description = getValueById("description");
     var location = getValueById("location");
     var price = getValueById("price");
-    var imageFile = document.getElementById('image').files[0]; // Get the uploaded image file
+    var imageFiles = document.getElementById('image').files; // Get the uploaded image file
+    var type = getValueById("type");
+    var area = getValueById("area");
+    alert(imageFiles[0])
+    alert(imageFiles[1])
+    alert(area);
+    alert(type);
+    // Upload all files
+    Promise.all(Array.from(imageFiles).map(file => uploadFile(file)))
+    .then(urls => {
+        imageUrls = urls;
 
-    // Generate a unique filename for the image in GCS
-    var imageName = 'house_image_' + Date.now() + '_' + imageFile.name;
-
-    // Create a reference to the root of your GCS bucket
-    var storageRef = firebase.storage().ref();
-
-    // Upload the image file to GCS
-    var imageRef = storageRef.child(imageName);
-    imageRef.put(imageFile).then(function(snapshot) {
-        console.log('Image uploaded successfully!');
-
-        // Get the download URL for the uploaded image
-        imageRef.getDownloadURL().then(function(downloadURL) {
-            console.log('File available at', downloadURL);
-
-            // Push data to Firebase Database including the image URL
-            houseRef.push({
-                title: title,
-                description: description,
-                location: location,
-                price: price,
-                imageUrl: downloadURL // Add image URL to the database
-            });
-
-            // Reset form
-            document.getElementById("house-form").reset();
-            
-            // Show success message
-            document.getElementById('alert').style.display = "block";
-            setTimeout(function(){
-                document.getElementById('alert').style.display = "none";
-            }, 2000);
+        return houseRef.push({
+            title: title,
+            description: description,
+            location: location,
+            price: price,
+            area: area,
+            type: type,
+            imageUrls: imageUrls
         });
-    }).catch(function(error) {
-        console.error('Error uploading image:', error);
+    })
+    .then(() => {
+        document.getElementById("house-form").reset();
+        document.getElementById('alert').style.display = "block";
+        setTimeout(() => {
+            document.getElementById('alert').style.display = "none";
+        }, 2000);
+        window.location.href = "searchPage.html";
+    })
+    .catch(error => {
+        alert('Error uploading images:', error);
     });
         
 }
 
-  // Call displayProperties function to retrieve and display properties data
-  
+ 
+
+
+
+// function addHouse(e){
+//     // Prevent the default form submission behavior
+//     e.preventDefault();
+//     // Get form data
+//     var title = getValueById("title");
+//     var description = getValueById("description");
+//     var location = getValueById("location");
+//     var price = getValueById("price");
+//     var imageFile = document.getElementById('image').files[0]; // Get the uploaded image file
+//     var type = getValueById("type");
+//     var area = getValueById("area");
+//     alert(area);
+//     alert(type);
+//     // Generate a unique filename for the image in GCS
+//     var imageName = 'house_image_' + Date.now() + '_' + imageFile.name;
+
+//     // Create a reference to the root of your GCS bucket
+    var storageRef = firebase.storage().ref();
+
+//     // Upload the image file to GCS
+//     var imageRef = storageRef.child(imageName);
+//     imageRef.put(imageFile).then(function(snapshot) {
+//         console.log('Image uploaded successfully!');
+
+//         // Get the download URL for the uploaded image
+//         imageRef.getDownloadURL().then(function(downloadURL) {
+//             console.log('File available at', downloadURL);
+
+//             // Push data to Firebase Database including the image URL
+//             houseRef.push({
+//                 title: title,
+//                 description: description,
+//                 location: location,
+//                 price: price,
+//                 area: area,
+//                 type : type,
+//                 imageUrl: downloadURL // Add image URL to the database
+//             });
+
+//             // Reset form
+//             document.getElementById("house-form").reset();
+            
+//             // Show success message
+//             document.getElementById('alert').style.display = "block";
+//             setTimeout(function(){
+//                 document.getElementById('alert').style.display = "none";
+//             }, 2000);
+//             window.location.href = "searchPage.html";
+//         });
+//     }).catch(function(error) {
+//         console.error('Error uploading image:', error);
+//     });
+        
+// }
