@@ -54,39 +54,18 @@ function submitForm(e){
     var password =  getValueById("Password");
 //errordata
     ref.on("value", checkData, errorData);
- //checkdata proverqva dali ima user
-    if(flag){
-        if(validateEmail(email)){
-            savaData(name, email, password);
-
-            document.getElementById('alert').style.display = "block";
- 
-            setTimeout(function(){
-                document.getElementById('alert').style.display = "none";
-            }, 2000);
-
-           document.getElementById("register-form").reset();
-        }else 
-        {
-            //TO DO:da se iznese vuv funkciq
-               document.getElementById("error").style.display = "block";
-
-                setTimeout(function(){
-                 document.getElementById("error").style.display = "none";
-                }, 2000);
-              
-                document.getElementById("register-form").reset();
-        }
-    }else{
-        document.getElementById("error").style.display = "block";
-
-        setTimeout(function(){
-         document.getElementById("error").style.display = "none";
-        }, 2000);
-      
-        document.getElementById("register-form").reset();
-        flag = true;
-    }
+    firebase.auth().createUserWithEmailAndPassword(email, password)
+    .then((userCredential) => {
+        // Registered 
+        const user = userCredential.user;
+        alert('Registration successful!');
+        window.location.href = 'searchPage.html'; // Redirect to home or desired page
+    })
+    .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        alert('Error: ' + errorMessage);
+    });
 }
 
 function validateEmail(email) 
@@ -147,29 +126,25 @@ function savaData(name, email, password){
      var username = getValueById('Username');
      var password = getValueById('Password');
      var users = data.val();
+     firebase.auth().signInWithEmailAndPassword(username, password)
+                .then((userCredential) => {
+                    // Signed in 
+                    alert('Login successful!');
+                    window.location.href = 'searchPage.html'; // Redirect to home or desired page
+                })
+                .catch((error) => {
+                    alert('Er11ror: ' + error.message);
+                });
+      
 
-     if(users != null){
-    
-        var keys = Object.keys(users);
-
-        for(var i = 0; i < keys.length; i++){
-            var key = keys[i];
-            var obj = users[key];
-            if(obj.name == username && obj.password == password){
-                window.location.href = "index.html";
-
-                return;
-            }
+    // Monitor auth state
+    firebase.auth().onAuthStateChanged((user) => {
+        if (user) {
+            document.body.classList.add('logged-in');
+        } else {
+            document.body.classList.remove('logged-in');
         }
-    }
-
-   document.getElementById("error").style.display = "block";
-
-   setTimeout(function(){
-    document.getElementById("error").style.display = "none";
-   }, 2000);
-
-   document.getElementById("login-form").reset();
+    });
  }
 
  function errorData(err){

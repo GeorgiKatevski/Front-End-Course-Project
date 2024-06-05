@@ -3,13 +3,13 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Property Details</title>
+    <title>Edit Property</title>
     <link rel="stylesheet" href=".\styles\MainPageStyle.css">
 </head>
 <body>
     <header>
         <div class="container">
-            <h1>Property <span>Details</span></h1>
+            <h1>Edit <span>Property</span></h1>
             <nav>
                 <ul>
                     <li><a href="index3.html">Home</a></li>
@@ -24,8 +24,28 @@
         </div>
     </header>
 
-    <div id="property-details-container" style="color: white;">
-        <!-- Property details will be dynamically inserted here -->
+    <div class="container">
+        <form id="editPropertyForm">
+            <label for="title">Title:</label>
+            <input type="text" id="title" name="title" required>
+            
+            <label for="description">Description:</label>
+            <textarea id="description" name="description" required></textarea>
+            
+            <label for="price">Price:</label>
+            <input type="number" id="price" name="price" required>
+            
+            <label for="location">Location:</label>
+            <input type="text" id="location" name="location" required>
+            
+            <label for="type">Type:</label>
+            <input type="text" id="type" name="type" required>
+            
+            <label for="area">Area:</label>
+            <input type="number" id="area" name="area" required>
+            
+            <button type="submit">Save Changes</button>
+        </form>
     </div>
 
     <footer>
@@ -35,10 +55,10 @@
             <button>Help</button>
         </div>
     </footer>
-    <script scr="https://www.gstatic.com/firebasejs/7.7.0/firebase-auth.js"></script>
+
+    <script src="https://www.gstatic.com/firebasejs/7.7.0/firebase-auth.js"></script>
     <script src="https://www.gstatic.com/firebasejs/7.7.0/firebase.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.1.1/firebase-storage.js"></script>
-    
-    <script src="script\detailsScript.js"></script>
+    <script src="script/editPropertyScript.js"></script>
 </body>
 </html>

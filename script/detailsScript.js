@@ -1,4 +1,5 @@
 const newLocal = 'DOMContentLoaded';
+var isLoggedIn = true;
 document.addEventListener(newLocal, () => {
     // Initialize Firebase
     var firebaseConfig = {
@@ -15,6 +16,28 @@ document.addEventListener(newLocal, () => {
         firebase.initializeApp(firebaseConfig);
     }
 
+    firebase.auth().onAuthStateChanged(user => {
+        console.log(user)
+        if (user) {
+            if (propertyId) {
+                isLoggedIn = true;
+                fetchPropertyDetails(propertyId);
+            } else {
+                document.getElementById('property-details-container').innerHTML = '<p>Property ID is missing.</p>';
+            }
+        } else {
+            if (propertyId) {
+                isLoggedIn = false;
+                fetchPropertyDetails(propertyId);
+            } else {
+                document.getElementById('property-details-container').innerHTML = '<p>Property ID is missing.</p>';
+            }
+        }
+    });
+
+
+
+    
     // Get the property ID from the URL
     const urlParams = new URLSearchParams(window.location.search);
     const propertyId = urlParams.get('id');
@@ -25,6 +48,8 @@ document.addEventListener(newLocal, () => {
         document.getElementById('property-details-container').innerHTML = '<p>Property ID is missing.</p>';
     }
 });
+const urlParams = new URLSearchParams(window.location.search);
+const propertyId = urlParams.get('id');
 
 function fetchPropertyDetails(propertyId) {
     const houseRef = firebase.database().ref('houses/' + propertyId);
@@ -84,6 +109,24 @@ if (houseData.imageUrls && houseData.imageUrls.length > 0) {
     imageContainer.appendChild(prevButton);
     imageContainer.appendChild(nextButton);
 }
+if (isLoggedIn) {
+    const deleteButton = document.createElement('button');
+    deleteButton.textContent = 'Delete';
+    deleteButton.id = 'deleteButton';
+    deleteButton.addEventListener('click', () => {
+        deleteProperty(propertyId);
+    });
+    container.appendChild(deleteButton);
+
+    const changeButton = document.createElement('button');
+    changeButton.textContent = 'Change';
+    changeButton.id = 'changeButton';
+    changeButton.addEventListener('click', () => {
+        changeProperty(propertyId, houseData);
+    });
+    container.appendChild(changeButton);
+}
+
 }
 
 function changeImage(direction, container) {
@@ -102,4 +145,24 @@ if (newIndex < 0) {
 }
 images[currentIndex].style.opacity = 0;
 images[newIndex].style.opacity = 1;
+}
+
+
+function changeProperty(propertyId, houseData) {
+    // This function can open a form pre-filled with existing houseData for editing
+    // You can redirect to a new page or open a modal for editing
+    window.location.href = `editProperty.html?id=${propertyId}`; // Redirect to an edit page with the property ID
+}
+
+function deleteProperty(propertyId) {
+    const houseRef = firebase.database().ref('houses/' + propertyId);
+    houseRef.remove()
+        .then(() => {
+            alert('Property deleted successfully!');
+            window.location.href = 'index3.html'; // Redirect to home page or another appropriate page
+        })
+        .catch((error) => {
+            console.error('Error deleting property:', error);
+            alert('Error deleting property. Please try again.');
+        });
 }
