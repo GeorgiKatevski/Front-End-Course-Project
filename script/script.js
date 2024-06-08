@@ -164,36 +164,60 @@ function savaData(name, email, password){
         });
     });
 }
- function addHouse(e){
-    // Prevent the default form submission behavior
+function addHouse(e) {
     e.preventDefault();
-    // Get form data
-    var title = getValueById("title");
-    var description = getValueById("description");
-    var location = getValueById("location");
-    var price = getValueById("price");
-    var imageFiles = document.getElementById('image').files; // Get the uploaded image file
-    var type = getValueById("type");
-    var area = getValueById("area");
+
+    const title = document.getElementById('title').value;
+    const description = document.getElementById('description').value;
+    const price = document.getElementById('price').value;
+    const location = document.getElementById('location').value;
+    const type = document.getElementById('type').value;
+    const area = document.getElementById('area').value;
+    const imageFiles = document.getElementById('image').files;
+    alert(images.length);
     firebase.auth().onAuthStateChanged(user => {
         if (user) {
             const userId = user.uid;
-            alert(userId);
             const newPropertyRef = firebase.database().ref('houses').push();
-            newPropertyRef.set({
-                title: title,
-                description: description,
-                price: price,
-                location: location,
-                type: type,
-                area: area,
-                userId: userId
-            }).then(() => {
-                alert('Property added successfully!');
-                window.location.href = 'index3.html';
+            const propertyId = newPropertyRef.key;
+            const storageRef = firebase.storage().ref();
+
+            const uploadPromises = [];
+            const imageUrls = [];
+
+            for (let i = 0; i < imageFiles.length; i++) {
+                const file = imageFiles[i];
+                const uploadTask = storageRef.child(`properties/${propertyId}/${file.name}`).put(file);
+
+                uploadPromises.push(
+                    uploadTask.then(snapshot => snapshot.ref.getDownloadURL())
+                    .then(downloadURL => {
+                        imageUrls.push(downloadURL);
+                    })
+                );
+            }
+
+            Promise.all(uploadPromises).then(() => {
+                newPropertyRef.set({
+                    title,
+                    description,
+                    price,
+                    location,
+                    type,
+                    area,
+                    userId,
+                    imageUrls
+                }).then(() => {
+                    alert('Property added successfully!');
+                    window.location.href = 'index3.html';
+                }).catch((error) => {
+                    console.error('Error adding property:', error);
+                    alert('Error adding property. Please try again.');
+                })
             }).catch((error) => {
-                console.error('Error adding property:', error);
-                alert('Error adding property. Please try again.');
+                console.error('Error uploading images:', error);
+                alert('Error uploading images. Please try again.');
+                document.getElementById('upload-progress').style.display = 'none';
             });
         } else {
             alert('You must be logged in to add a property.');

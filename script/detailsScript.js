@@ -20,15 +20,13 @@ document.addEventListener(newLocal, () => {
         console.log(user)
         if (user) {
             if (propertyId) {
-                isLoggedIn = true;
-                fetchPropertyDetails(propertyId);
+                fetchPropertyDetails(propertyId, user.uid);
             } else {
                 document.getElementById('property-details-container').innerHTML = '<p>Property ID is missing.</p>';
             }
         } else {
             if (propertyId) {
-                isLoggedIn = false;
-                fetchPropertyDetails(propertyId);
+                fetchPropertyDetails(propertyId, null);
             } else {
                 document.getElementById('property-details-container').innerHTML = '<p>Property ID is missing.</p>';
             }
@@ -38,25 +36,17 @@ document.addEventListener(newLocal, () => {
 
 
     
-    // Get the property ID from the URL
-    const urlParams = new URLSearchParams(window.location.search);
-    const propertyId = urlParams.get('id');
-    alert(propertyId)
-    if (propertyId) {
-        fetchPropertyDetails(propertyId);
-    } else {
-        document.getElementById('property-details-container').innerHTML = '<p>Property ID is missing.</p>';
-    }
+    
 });
 const urlParams = new URLSearchParams(window.location.search);
 const propertyId = urlParams.get('id');
 
-function fetchPropertyDetails(propertyId) {
+function fetchPropertyDetails(propertyId,currentUserId) {
     const houseRef = firebase.database().ref('houses/' + propertyId);
     houseRef.once('value', function(snapshot) {
         const houseData = snapshot.val();
         if (houseData) {
-            displayPropertyDetails(houseData);
+            displayPropertyDetails(houseData,currentUserId);
         } else {
             document.getElementById('property-details-container').innerHTML = '<p>Property details not found.</p>';
         }
@@ -66,7 +56,7 @@ function fetchPropertyDetails(propertyId) {
     });
 }
 
-function displayPropertyDetails(houseData) {
+function displayPropertyDetails(houseData,currentUserId) {
     const container = document.getElementById('property-details-container');
     container.innerHTML = `
         <h2>${houseData.title}</h2>
@@ -80,6 +70,7 @@ function displayPropertyDetails(houseData) {
     // Display the images
 // Display the images
 const imageContainer = document.getElementById('image-container');
+alert(houseData.imageUrls)
 if (houseData.imageUrls && houseData.imageUrls.length > 0) {
     houseData.imageUrls.forEach((url, index) => {
         const img = document.createElement('img');
@@ -109,7 +100,11 @@ if (houseData.imageUrls && houseData.imageUrls.length > 0) {
     imageContainer.appendChild(prevButton);
     imageContainer.appendChild(nextButton);
 }
-if (isLoggedIn) {
+// alert("test1: " + houseData.userId)
+// alert("test2: " +currentUserId)
+alert("currentUserId: " + currentUserId);
+alert("houseData.userId : " + houseData.userId);
+if (currentUserId && houseData.userId === currentUserId)  {
     const deleteButton = document.createElement('button');
     deleteButton.textContent = 'Delete';
     deleteButton.id = 'deleteButton';
