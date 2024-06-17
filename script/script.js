@@ -17,7 +17,6 @@ var firebaseConfig = {
 
 const database = firebase.database();
 var houseRef = firebase.database().ref('houses');
-alert(houseRef);
    
 var houseForm = document.getElementById("house-form");
   if(houseForm != null)
@@ -174,7 +173,7 @@ function addHouse(e) {
     const type = document.getElementById('type').value;
     const area = document.getElementById('area').value;
     const imageFiles = document.getElementById('image').files;
-    alert(images.length);
+
     firebase.auth().onAuthStateChanged(user => {
         if (user) {
             const userId = user.uid;

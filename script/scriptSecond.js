@@ -40,9 +40,6 @@ houseRef.once('value', function(snapshot) {
             var title = document.createElement('h2');
             title.textContent = houseData.title;
 
-           // var description = document.createElement('p');
-           // description.textContent = 'Description: ' + houseData.description;
-
             var price = document.createElement('p');
             price.textContent = 'Price: ' + houseData.price;
 
@@ -60,11 +57,8 @@ houseRef.once('value', function(snapshot) {
             houseDiv.appendChild(title);
             houseDiv.appendChild(price);
             houseDiv.appendChild(location);
-           // houseDiv.appendChild(description);
             houseDiv.appendChild(detailsButton);
             
-
-
             detailsButton.addEventListener('click', function(event) {
               const propertyId = event.target.getAttribute('data-id');
               window.location.href = `details.html?id=${propertyId}`;
@@ -122,7 +116,6 @@ function addHouseToPage(houseData) {
     // Append houseDiv to housesContainer
     housesContainer.appendChild(houseDiv);
     housesContainer.appendChild(image);
-    //housesContainer.appendChild(detailsButton);
 
     housesContainer2.appendChild(housesContainer);
 

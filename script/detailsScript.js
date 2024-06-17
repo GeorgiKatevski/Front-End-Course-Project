@@ -33,11 +33,8 @@ document.addEventListener(newLocal, () => {
         }
     });
 
-
-
-    
-    
 });
+
 const urlParams = new URLSearchParams(window.location.search);
 const propertyId = urlParams.get('id');
 
@@ -100,10 +97,7 @@ if (houseData.imageUrls && houseData.imageUrls.length > 0) {
     imageContainer.appendChild(prevButton);
     imageContainer.appendChild(nextButton);
 }
-// alert("test1: " + houseData.userId)
-// alert("test2: " +currentUserId)
-alert("currentUserId: " + currentUserId);
-alert("houseData.userId : " + houseData.userId);
+
 if (currentUserId && houseData.userId === currentUserId)  {
     const deleteButton = document.createElement('button');
     deleteButton.textContent = 'Delete';
