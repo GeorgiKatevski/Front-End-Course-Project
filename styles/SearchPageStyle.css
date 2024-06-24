@@ -39,6 +39,24 @@ a:hover {
     color: #00FFFF;
 }
 
+button {
+    background: none;
+    border: none;
+    font-size: 16px;
+    color: #fff;
+    cursor: pointer;
+    transition: color 0.3s;
+    text-decoration: none; /* This ensures text-decoration is none */
+}
+nav {
+    display: flex;
+    justify-content: center; /* Center the nav items horizontally */
+}
+
+button:hover {
+    color: #00FFFF;
+}
+
 .search-container {
     width: 80%;
     margin: 50px auto;

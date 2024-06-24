@@ -119,6 +119,11 @@ header ul li{
     margin: 5px
 }
 
+li {
+
+    background: none;
+}
+
 .article {
     overflow: auto;
 }
@@ -443,4 +448,17 @@ button:hover {
     position: absolute;
     opacity: 0;
     transition: opacity 0.1s ease;
+}
+
+#logout-button {
+    background: transparent;
+    border:none;
+    color: #fff;
+    margin-top: -10px;
+    margin-left: -15px;
+    font-size:16px;
+
+}
+#logout-button:hover {
+    color: #00CED1; /* Button background color on hover */
 }

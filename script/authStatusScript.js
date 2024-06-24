@@ -30,6 +30,7 @@ document.addEventListener(newLocal, () => {
             const logoutButton = document.createElement('button');
             logoutButton.textContent = 'Logout';
             logoutButton.id = 'logout-button';
+            logoutButton.classList.add('nav-menu');
             logoutButton.addEventListener('click', () => {
                 firebase.auth().signOut().then(() => {
                     window.location.reload();
@@ -43,8 +44,6 @@ document.addEventListener(newLocal, () => {
             navMenu.appendChild(listItem);
         } else {
             // No user is signed in
-            loginLink.style.display = 'block';
-            registerLink.style.display = 'block';
         }
     });
 });
