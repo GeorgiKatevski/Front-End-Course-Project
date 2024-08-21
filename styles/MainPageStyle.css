@@ -5,7 +5,11 @@
     overflow: hidden;
     font-family: sans-serif;
 }
-
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; /* This ensures that all elements inherit box-sizing */
+}
 body
 {
     margin:0;
@@ -14,6 +18,7 @@ body
     background: linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.6)),url(../imgs/mansion1.jpg) repeat center center fixed; 
     background-size:cover;
     box-sizing:border-box;  
+    width: 100%;
 }
 
 header{
@@ -209,15 +214,7 @@ table{
     width: 100%;
 }
 
-div.footer {
-    position: absolute; 
-    bottom: 0;
-    width: 100%;
-    height: 2.5rem;  
-    padding: 10px;
-    color: white;
-    background-color: black;
-  }
+
   
 div.article {
     margin: 5px;
@@ -318,15 +315,76 @@ div.article {
     line-height: 120%;
     font-family: 'Open sans', 'sans-serif';
 }   
+.image {
+    width: 100%; /* Adjust this as needed */
+    margin:10px;
+    display: block;
+}
 
 .house {
     display: flex; /* Use flexbox for layout */
-    align-items: left; /* Vertically center the content */
-    padding: 40px;
-    margin-bottom: 50px;
+    padding: 20px; 
+    margin-right: 50%;
     color: white;
-    flex-direction:column;
-    flex-wrap: wrap;
+    flex-direction: column;
+    gap: bottom 20px;
+    width: 100%; /* Ensure full width */
+}
+.house h2 {
+    white-space: nowrap; /* Prevents the text from wrapping */
+}
+
+.house button {
+    width: 100px; /* Set a specific width */
+    height: 30px; /* Set a specific height */
+    display: flex; /* Enables flexbox layout */
+    justify-content: center; /* Centers content horizontally */
+    align-items: center; /* Centers content vertically */
+}
+
+/* Responsive Styles */
+@media (max-width: 1068px) {
+    .house {
+        display: flex; /* Use flexbox for layout */
+        padding: 40px; 
+        margin-right: 30% !important;
+        color: white;
+        flex-direction: column;
+        flex-wrap: wrap;
+    }
+}
+
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .houses-container{
+        border-bottom:1px solid #00FFFF;
+        display:flex;
+        flex-direction: column;
+        margin-bottom: 5px;
+    }
+    .house-internal {
+        display: flex;
+        flex-direction: column !important;
+        border-bottom: 1px solid #00FFFF;
+        justify-content: space-between; /* Distributes space between items */
+        align-items: center !important;
+        gap:  5px !important;
+    }   
+    .house {
+        margin-left: 100px; /* Reset the right margin */
+        margin-top: 0px; /* Add a top margin for spacing */
+        width: 100%; /* Ensure full width */
+        align-items: center;
+    }
+
+    .image {
+         /* Make the image smaller on smaller screens */
+        /* Optionally, you can also center the image if it's not already */
+        margin-left: auto;
+        margin-right: auto;
+        display: block;
+    }
 }
 
 
@@ -354,13 +412,27 @@ div.article {
     border-bottom:1px solid #00FFFF;
     display:flex;
     flex-direction: column;
+    width: 100%;
 }
 
-.house-internal{
-    display:flex;
+.house-internal {
+    display: flex;
     flex-direction: row;
-    border-bottom:1px solid #00FFFF;
+    gap: 50px;
+    border-bottom: 1px solid #00FFFF;
+    justify-content: space-between; /* Distributes space between items */
+    align-items: center; /* Aligns items vertically in the center */
+    width: 100%; 
+    box-sizing: border-box; /* Include padding and border in the element's width */
 }
+houseDiv button {
+    width: 100px; /* Set the width of the button */
+    height: 40px; /* Set the height of the button */
+    /* Additional styling properties */
+}
+
+
+
 
 .house .price {
     font-weight: bold;
@@ -392,31 +464,40 @@ div.article {
 
 
 /* Copyright notice */
-.copyright {
-    position: fixed;
+
+
+
+
+/* Footer styling */
+footer {
+    position: relative;
+    width: 100%;
+    padding: 30px;
+    box-shadow: 0 -1px 5px rgba(0, 0, 0, 0.1); /* Optional: shadow for better visibility */
+}
+
+/* Bottom buttons container */
+.bottom-buttons {
+    position: absolute;
     bottom: 10px;
-    right:0px;
+    right: 50px;
+}
+
+.copyright {
+    display: flex;
+    flex-direction: column;
+    position:absolute;
+    bottom: 10px;
+    right:40px;
     transform: translateX(-50%);
     color: white;
     font-size: 14px;
 }
-/* Contact and Help buttons */
-.bottom-buttons {
-    position: fixed;
-    bottom: 30px;
-    right: 30px; /* Adjust the distance from the right edge */
-}
 
 .bottom-buttons button {
-    margin-left: 10px; /* Adjust the distance between buttons */
-    background-color: #00FFFF;
-    border: none;
-    color: white;
-    padding: 10px 20px;
-    cursor: pointer;
-    border-radius: 5px;
-    transition: background-color 0.3s;
+    margin-left: 5px; /* Space between buttons */
 }
+
 
 .bottom-buttons button:hover {
     background-color: #00CED1;
@@ -443,6 +524,9 @@ button:hover {
     height: 200px; /* Adjust as needed */
 }
 
+
+
+
 .image-container img {
     left : 30%;
     position: absolute;
@@ -461,4 +545,66 @@ button:hover {
 }
 #logout-button:hover {
     color: #00CED1; /* Button background color on hover */
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    footer {
+        padding: 1.5rem; 
+        padding-bottom: 5rem; /* Increase padding at the bottom of the footer *//* Adjust padding for smaller screens */
+    }
+
+    .bottom-buttons {
+        bottom : 0px;
+        right: 0.5rem; /* Reduce right margin for smaller screens */
+        margin-top: 2rem; /* Increase bottom margin to create more space */
+    }
+
+    .copyright {
+        font-size: 0.75rem; /* Reduce font size for smaller screens */
+        bottom: 10px;
+        right:40px;
+    }
+    #contact {
+        padding: 5px 10px; /* Reduce padding */
+        font-size: 0.75rem; /* Reduce font size */
+    }
+    #prevPageBtn {
+        padding: 5px 10px; /* Reduce padding */
+        font-size: 0.75rem; /* Reduce font size */
+    }
+    #nextPageBtn {
+        padding: 5px 10px; /* Reduce padding */
+        font-size: 0.75rem; /* Reduce font size */
+    }
+    
+    /* Specific styling for the Help button */
+    #help {
+        padding: 5px 10px; /* Reduce padding */
+        font-size: 0.75rem; /* Reduce font size */
+        bottom: 0px;
+    }
+}
+
+@media (max-width: 480px) {
+    footer {
+        padding: 1rem; /* Further reduce padding for very small screens */
+    }
+
+    .bottom-buttons {
+        font-size: 0.75rem; /* Reduce font size for smaller screens */
+        padding: 0.5rem; /* Reduce padding to make the buttons smaller */
+        width: auto; /* Adjust width as needed */
+        height: auto;    
+    } 
+    .copyright {
+        bottom: 0.5rem; /* Adjust bottom margin for small screens */
+        bottom: 10px;
+        right:0px;
+       /* Stack items vertically */
+    }
+
+    .copyright {
+        font-size: 0.65rem; /* Further reduce font size for very small screens */
+    }
 }

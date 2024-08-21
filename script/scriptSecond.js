@@ -1,152 +1,189 @@
-
-//making database to store the names passwords and emails 
+// Firebase configuration
 var firebaseConfig = {
-    apiKey: "AIzaSyD8RdguFfTPgERlQQxTt5ZcoDcrdd3_1sU",
-    authDomain: "realproperty-94648.firebaseapp.com",
-    databaseURL: "https://realproperty-94648.firebaseio.com",
-    projectId: "realproperty-94648",
-    storageBucket: "realproperty-94648.appspot.com",
-    messagingSenderId: "439144328697",
-    appId: "1:439144328697:web:7888406bd4f53d32bd2128",
-    measurementId: "G-F5GBF9JG1J"
-  };
-  // Initialize Firebase
-  firebase.initializeApp(firebaseConfig);
-  firebase.analytics();
+  apiKey: "AIzaSyD8RdguFfTPgERlQQxTt5ZcoDcrdd3_1sU",
+  authDomain: "realproperty-94648.firebaseapp.com",
+  databaseURL: "https://realproperty-94648.firebaseio.com",
+  projectId: "realproperty-94648",
+  storageBucket: "realproperty-94648.appspot.com",
+  messagingSenderId: "439144328697",
+  appId: "1:439144328697:web:7888406bd4f53d32bd2128",
+  measurementId: "G-F5GBF9JG1J"
+};
+// Initialize Firebase
+firebase.initializeApp(firebaseConfig);
+firebase.analytics();
 
 const database = firebase.database();
-var houseRef = firebase.database().ref('houses');
-// Array to store download URLs
-var imageUrls = [];
+const houseRef = database.ref('houses');
 
-const urlParams = new URLSearchParams(window.location.search);
-const locationParam = urlParams.get('location');
-const minPriceParam = urlParams.get('minPrice');
-const maxPriceParam = urlParams.get('maxPrice');
+const propertiesPerPage = 2; // Number of properties to display per page
+let currentPage = parseInt(new URLSearchParams(window.location.search).get('page')) || 1; // Current page number
+let sortBy = new URLSearchParams(window.location.search).get('sort') || 'title'; // Sorting criterion
+const locationParam = new URLSearchParams(window.location.search).get('location');
+const minPriceParam = new URLSearchParams(window.location.search).get('minPrice');
+const maxPriceParam = new URLSearchParams(window.location.search).get('maxPrice');
 
-// Function to fetch houses data from Firebase and display them
-houseRef.once('value', function(snapshot) {
-    var mainHouseContainer = document.getElementById('houses-container');
-    snapshot.forEach(function(childSnapshot) {
-        var houseData = childSnapshot.val();
-            //Filter data
-            if(checkSearchData(houseData)){
-            var housesContainer = document.createElement('div');
-            housesContainer.className = 'house-internal';
+// Function to fetch and display houses with pagination and sorting
+async function fetchAndDisplayHouses() {
+  const snapshot = await houseRef.once('value');
+  const houses = [];
 
-            var houseDiv = document.createElement('div');
-            houseDiv.className = 'house';
+  snapshot.forEach(function(childSnapshot) {
+      const houseData = childSnapshot.val();
 
-            var title = document.createElement('h2');
-            title.textContent = houseData.title;
-
-            var price = document.createElement('p');
-            price.textContent = 'Price: ' + houseData.price;
-
-            var location = document.createElement('p');
-            location.textContent = 'Location: ' + houseData.location;
-
-            var image = document.createElement('img');
-            image.src = houseData.imageUrls;
-            
-            var detailsButton = document.createElement('button');
-            detailsButton.textContent = 'Details';
-            detailsButton.setAttribute('data-id', childSnapshot.key); // Set data-id attribute with the key
-
-            // Append elements to houseDiv
-            houseDiv.appendChild(title);
-            houseDiv.appendChild(price);
-            houseDiv.appendChild(location);
-            houseDiv.appendChild(detailsButton);
-            
-            detailsButton.addEventListener('click', function(event) {
-              const propertyId = event.target.getAttribute('data-id');
-              window.location.href = `details.html?id=${propertyId}`;
+      if (checkSearchData(houseData)) {
+          houses.push({
+              id: childSnapshot.key,
+              data: houseData
           });
+      }
+  });
 
-            var imageDiv = document.createElement('div');
-            imageDiv.className = 'image';
-            imageDiv.appendChild(image);
-            
-            housesContainer.appendChild(imageDiv);
-            housesContainer.appendChild(houseDiv);
-            mainHouseContainer.appendChild(housesContainer);
-            }
-        });
+  // Sort houses based on the selected sorting criterion
+  sortHouses(houses);
 
-});
-
-
-// Function to dynamically generate HTML for each house and add it to the page
-function addHouseToPage(houseData) {
-    var housesContainer2 = document.getElementById('houses-container');
-    var housesContainer = document.getElementById('house-internal');
-
-
-    var houseDiv = document.createElement('div');
-    houseDiv.className = 'house';
-
-    var title = document.createElement('h2');
-    title.textContent = houseData.title;
-
-    var description = document.createElement('p');
-    description.textContent = 'Description: ' + houseData.description;
-
-    var price = document.createElement('p');
-    price.textContent = 'Price: ' + houseData.price;
-
-    var location = document.createElement('p');
-    location.textContent = 'Location: ' + houseData.location;
-
-    var image = document.createElement('img');
-    image.src = houseData.imageUrls[0];
-    
-    
-    var detailsButton = document.createElement('button');
-    detailsButton.textContent = 'Details';
-    
-    // Append elements to houseDiv
-    houseDiv.appendChild(title);
-    houseDiv.appendChild(description);
-    houseDiv.appendChild(price);
-    houseDiv.appendChild(location);
-    houseDiv.appendChild(detailsButton);
-
-
-    // Append houseDiv to housesContainer
-    housesContainer.appendChild(houseDiv);
-    housesContainer.appendChild(image);
-
-    housesContainer2.appendChild(housesContainer);
-
+  const totalPages = Math.ceil(houses.length / propertiesPerPage);
+  displayHouses(houses, totalPages);
 }
 
-
-function checkSearchData(houseData){
-  
-  if(minPriceParam == '' && maxPriceParam == '' && locationParam == ''){
-    return true;
-  }
-  if((houseData.location.toLowerCase() === locationParam.toLowerCase())
-    && (minPriceParam === '' && maxPriceParam >= houseData.price))
-  {
-  return true;
-  }
-  if((houseData.location.toLowerCase() === locationParam.toLowerCase())
-    && (minPriceParam <= houseData.price && maxPriceParam == ''))
-  {
-  return true;
-  }
-  if((houseData.location.toLowerCase() === locationParam.toLowerCase())
-        && (minPriceParam <= houseData.price && maxPriceParam >= houseData.price))
-  {
-    return true;
-  }
-
-  if(houseData.location.toLowerCase() != locationParam.toLowerCase()){
-    return false;
-  }
-  return false;
+// Function to sort houses based on the selected criterion
+function sortHouses(houses) {
+  houses.sort((a, b) => {
+      if (sortBy === 'title') {
+          return a.data.title.localeCompare(b.data.title);
+      } else if (sortBy === 'price') {
+          return a.data.price - b.data.price;
+      } 
+  });
 }
 
+// Function to display houses on the current page
+function displayHouses(houses, totalPages) {
+  const mainHouseContainer = document.getElementById('houses-container');
+  mainHouseContainer.innerHTML = ''; // Clear the container
 
+  const start = (currentPage - 1) * propertiesPerPage;
+  const end = start + propertiesPerPage;
+  const housesToShow = houses.slice(start, end);
+
+  housesToShow.forEach(house => {
+      const houseDiv = createHouseDiv(house.data, house.id);
+      mainHouseContainer.appendChild(houseDiv);
+  });
+
+  updatePaginationControls(currentPage, totalPages);
+  showPaginationControls(); // Show pagination controls after data is loaded
+  showFooter(); // Show footer after data is loaded
+}
+
+// Function to create a div for a house
+function createHouseDiv(houseData, houseId) {
+  const housesContainer = document.createElement('div');
+  housesContainer.className = 'house-internal';
+
+  const houseDiv = document.createElement('div');
+  houseDiv.className = 'house';
+
+  const title = document.createElement('h2');
+  title.textContent = houseData.title;
+
+  const price = document.createElement('p');
+  price.textContent = 'Price: ' + houseData.price;
+
+  const location = document.createElement('p');
+  location.textContent = 'Location: ' + houseData.location;
+
+  const image = document.createElement('img');
+  image.src = houseData.imageUrls;
+
+  const detailsButton = document.createElement('button');
+  detailsButton.textContent = 'Details';
+  detailsButton.setAttribute('data-id', houseId);
+  detailsButton.addEventListener('click', function(event) {
+      const propertyId = event.target.getAttribute('data-id');
+      window.location.href = `details.html?id=${propertyId}`;
+  });
+
+  houseDiv.appendChild(title);
+  houseDiv.appendChild(price);
+  houseDiv.appendChild(location);
+  houseDiv.appendChild(detailsButton);
+
+  const imageDiv = document.createElement('div');
+  imageDiv.className = 'image';
+  imageDiv.appendChild(image);
+
+  housesContainer.appendChild(imageDiv);
+  housesContainer.appendChild(houseDiv);
+
+  return housesContainer;
+}
+
+// Function to update pagination controls
+function updatePaginationControls(currentPage, totalPages) {
+  const prevButton = document.getElementById('prevPageBtn');
+  const nextButton = document.getElementById('nextPageBtn');
+  const pageNumberSpan = document.getElementById('pageNumber');
+
+  pageNumberSpan.textContent = currentPage;
+
+  prevButton.disabled = currentPage === 1;
+  nextButton.disabled = currentPage === totalPages;
+
+  prevButton.onclick = () => changePage(currentPage - 1);
+  nextButton.onclick = () => changePage(currentPage + 1);
+}
+
+// Function to show pagination controls after data has been loaded
+function showPaginationControls() {
+  const pagination = document.querySelector('.pagination');
+  pagination.style.display = 'block'; // Show the pagination controls
+}
+
+// Function to show footer after data has been loaded
+function showFooter() {
+  const footer = document.querySelector('footer');
+  footer.style.display = 'block'; // Show the footer
+}
+
+// Function to change the current page
+function changePage(newPage) {
+  currentPage = newPage;
+  updateUrlParams('page', newPage);
+  fetchAndDisplayHouses();
+}
+
+// Function to update URL parameters
+function updateUrlParams(key, value) {
+  const urlParams = new URLSearchParams(window.location.search);
+  urlParams.set(key, value);
+  window.history.replaceState({}, '', `${window.location.pathname}?${urlParams}`);
+}
+
+// Function to check if the house data matches the search criteria
+function checkSearchData(houseData) {
+  const matchesLocation = locationParam ? houseData.location.toLowerCase() === locationParam.toLowerCase() : true;
+  const matchesMinPrice = minPriceParam ? houseData.price >= parseFloat(minPriceParam) : true;
+  const matchesMaxPrice = maxPriceParam ? houseData.price <= parseFloat(maxPriceParam) : true;
+
+  return matchesLocation && matchesMinPrice && matchesMaxPrice;
+}
+
+// Function to handle sorting selection change
+function onSortChange() {
+  sortBy = document.getElementById('sort-select').value;
+  currentPage = 1; // Reset to the first page
+  updateUrlParams('sort', sortBy);
+  updateUrlParams('page', currentPage);
+  fetchAndDisplayHouses(); // Fetch and display houses with new sorting
+}
+
+// Hide the pagination and footer initially
+document.querySelector('.pagination').style.display = 'none';
+document.querySelector('footer').style.display = 'none';
+
+// Add event listener to the sort select dropdown
+document.getElementById('sort-select').addEventListener('change', onSortChange);
+
+// Initialize the page by fetching and displaying houses
+fetchAndDisplayHouses();

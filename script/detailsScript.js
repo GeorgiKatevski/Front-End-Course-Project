@@ -148,7 +148,7 @@ function deleteProperty(propertyId) {
     houseRef.remove()
         .then(() => {
             alert('Property deleted successfully!');
-            window.location.href = 'index3.html'; // Redirect to home page or another appropriate page
+            window.location.href = 'mainPage.html'; // Redirect to home page or another appropriate page
         })
         .catch((error) => {
             console.error('Error deleting property:', error);

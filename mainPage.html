@@ -3,10 +3,10 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>check</title>
-    <link rel="stylesheet" href=".\styles\MainPageStyle.css">
+    <title>Real Properties</title>
+    <link rel="stylesheet" href="./styles/MainPageStyle.css">
 </head>
-<body>        
+<body>
     <header>
         <div class="container">
             <h1>Real <span>properties</span></h1>
@@ -23,6 +23,14 @@
         </div>
     </header>
 
+    <div id="sorting-container">
+        <label for="sort-select">Sort by:</label>
+        <select id="sort-select">
+            <option value="title">Title</option>
+            <option value="price">Price</option>
+        </select>
+    </div>
+
     <div id="houses-container">
         <!-- Houses will be dynamically inserted here -->
     </div>
@@ -32,17 +40,19 @@
         <span id="pageNumber">1</span>
         <button id="nextPageBtn">Next</button>
     </div>
+
     <footer>
         <div class="copyright">Copyright © 2024 RealProperty company. All rights reserved.</div>
         <div class="bottom-buttons">
-            <button>Contact</button>
-            <button>Help</button>
+            <button id="contact">Contact</button>
+            <button id="help">Help</button>
         </div>
     </footer>
-    <script scr="https://www.gstatic.com/firebasejs/7.7.0/firebase-auth.js"></script>
+
+    <script src="https://www.gstatic.com/firebasejs/7.7.0/firebase-auth.js"></script>
     <script src="https://www.gstatic.com/firebasejs/7.7.0/firebase.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.1.1/firebase-storage.js"></script>
-    <script src="script\scriptSecond.js"></script>
-    <script src="script\authStatusScript.js"></script>
+    <script src="script/scriptSecond.js"></script>
+    <script src="script/authStatusScript.js"></script>
 </body>
 </html>
