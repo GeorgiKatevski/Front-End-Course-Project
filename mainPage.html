@@ -12,18 +12,25 @@
             <h1>Real <span>properties</span></h1>
             <nav>
                 <ul id="nav-menu">
-                    <li><a href="searchPage.html">Home</a></li>
+                    <li><a href="searchPage.html">Search</a></li>
                     <li><a href="Contact.html">Contact</a></li>
                     <li id="login-link"><a href="Login.html">Login</a></li>
                     <li id="register-link"><a href="Register.html">Register</a></li>
                     <li><a href="addHouse.html">Add property</a></li>
-                    <li><a href="addHouse.html">Statistics</a></li>
+                    <li><a href="statistics.html">Statistics</a></li>
                 </ul>
             </nav>
         </div>
     </header>
 
     <div id="sorting-container">
+        <div id="filter-container">
+            <label for="filter-type">Filter by:</label>
+            <input type="checkbox" id="filter-apartment" name="property-type" value="Apartment">
+            <label for="filter-apartment">Apartment</label>
+            <input type="checkbox" id="filter-house" name="property-type" value="House">
+            <label for="filter-house">House</label>
+        </div>
         <label for="sort-select">Sort by:</label>
         <select id="sort-select">
             <option value="title">Title</option>

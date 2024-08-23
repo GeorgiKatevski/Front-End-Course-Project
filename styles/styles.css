@@ -1,0 +1,177 @@
+/* General styles for the property details page */
+body {
+    background: linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.6)), url(../imgs/mansion1.jpg) repeat center center fixed;
+    background-size: cover;
+}
+
+#property-details-container {
+    color: white;
+    padding: 20px;
+    margin: 20px auto;
+    max-width: 1000px;
+    background-color: rgba(0, 0, 0, 0.6); /* Semi-transparent background */
+    border-radius: 10px;
+    font-family: sans-serif;
+    flex-direction: column;
+}
+
+#property-details-container h2 {
+    margin-bottom: 20px;
+    font-family: sans-serif;
+}
+
+/* Styles for the Image Container (Slideshow) */
+.image-container {
+   max-width: 1000px;
+   position: relative;
+   margin: auto;
+}
+
+/* Styles for Each Slide */
+.mySlides {
+    display: none;
+}
+
+.property-image {
+    width: 100%; /* Fill the width of the container */
+    height: auto; /* Adjust height to maintain aspect ratio */
+    object-fit: contain; /* Ensures the image fits within the container without distortion */
+    border: 2px solid #00FFFF; /* Border around images */
+    border-radius: 5px; /* Rounded corners for images */
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3); /* Shadow for images */
+}
+
+/* Styles for Navigation Buttons */
+.prev, .next {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    width: auto;
+    margin-top: -22px;
+    padding: 16px;
+    color: white;
+    font-weight: bold;
+    font-size: 18px;
+    transition: 0.6s ease;
+    border-radius: 0 3px 3px 0;
+    user-select: none;
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+}
+
+.next {
+    right: 0;
+    border-radius: 3px 0 0 3px;
+}
+
+.prev {
+    left: 0;
+    border-radius: 3px 0 0 3px;
+}
+
+.prev:hover, .next:hover {
+    background-color: rgba(0,0,0,0.8);
+}
+
+/* Fading animation */
+.fade {
+    animation-name: fade;
+    animation-duration: 1.5s;
+}
+
+@keyframes fade {
+    from {opacity: .4}
+    to {opacity: 1}
+}
+
+/* Styles for Buttons */
+#buy-button, #deleteButton, #changeButton {
+    margin-top: 30px;
+    border-radius: 80%;
+    width: 120px;
+    height: 70px;
+    font-weight: bold;
+    font-size: medium;
+    border-color: white;
+    border-style: solid;
+    background: linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.6));
+    text-align: center;
+    color: white;
+}
+
+#buy-button:hover, #deleteButton:hover, #changeButton:hover {
+    background-color: #00CED1;
+}
+
+/* Header Styles */
+header {
+    background: rgba(0,0,0,.8);
+    box-shadow: 0 15px 25px rgba(0,0,0,.5);
+    padding-top: 30px;
+    margin: auto;
+    overflow: hidden;
+    border-bottom: #00FFFF solid 1px;
+}
+
+.container {
+    width: 100%;
+    height: 100px;
+    margin: auto;
+    overflow: hidden;
+    font-family: sans-serif;
+}
+
+/* Heading in the container */
+.container h1 {
+    color: white;
+    margin-bottom: 10px;
+}
+
+/* Span inside header */
+header span {
+    color: #00FFFF;
+}
+
+/* Links inside container */
+.container a {
+    text-decoration: none;
+    font-size: 16px;
+    color: #ffffff;
+    margin-bottom: 5px;
+}
+
+/* Navigation Styles */
+nav {
+    display: flex;
+    justify-content: right;
+    flex-direction: row;
+}
+
+/* Highlight text in header */
+header .highlight {
+    color: #00FFFF;
+}
+
+/* List Styles */
+ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+li {
+    display: inline-block;
+    margin-right: 20px;
+}
+
+/* Hover effect for header links */
+header a:hover {
+    color: #00FFFF;
+}
+
+footer {
+    background-color: rgba(0,0,0,.8);
+    color: #fff;
+    text-align: right;
+    padding: 10px 0;
+    font-family: sans-serif;
+}

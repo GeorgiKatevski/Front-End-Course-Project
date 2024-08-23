@@ -107,6 +107,12 @@ header span{
 header a:hover{
     color:#00FFFF;
 }
+header a {
+    text-decoration: none;
+    font-size: 16px;
+    color: #ffffff;
+    margin-bottom: 5px;
+}
 
 ul{
     margin: 0;
@@ -607,4 +613,87 @@ button:hover {
     .copyright {
         font-size: 0.65rem; /* Further reduce font size for very small screens */
     }
+}
+
+
+
+/* Sorting Container */
+#sorting-container {
+    display: flex;
+    justify-content: flex-end; /* Align to the right */
+    align-items: center; /* Center vertically */
+    padding: 10px 20px;
+    margin-bottom: 20px;
+    background-color: rgba(0, 0, 0, 0.8); /* Similar to header background */
+    border: 1px solid #00FFFF; /* Border similar to other elements */
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3); /* Add a shadow effect */
+    border-radius: 5px; /* Rounded corners */
+    width: calc(100% - 40px); /* Full width minus padding */
+    max-width: 1200px; /* Max width to prevent it from being too wide on large screens */
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#sorting-container label {
+    color: #ffffff; /* White text color */
+    font-size: 16px;
+    margin-right: 10px;
+}
+
+#sorting-container select {
+    padding: 8px;
+    border-radius: 5px;
+    border: 1px solid #00FFFF;
+    background-color: #000; /* Dropdown background to match theme */
+    color: #ffffff; /* Text color inside dropdown */
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+#sorting-container select:hover {
+    background-color: #00FFFF; /* Highlight on hover */
+    color: #000; /* Invert text color */
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    #sorting-container {
+        justify-content: center; /* Center the sorting container on smaller screens */
+        flex-direction: column; /* Stack label and select vertically */
+        align-items: flex-start;
+    }
+
+    #sorting-container label {
+        margin-bottom: 10px;
+    }
+
+    #sorting-container select {
+        width: 100%; /* Full width on smaller screens */
+        margin-bottom: 10px;
+    }
+}
+
+/* Filter Container */
+#filter-container {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start; /* Align items to the start */
+    order: 0;
+    padding: 10px 20px;
+    margin-left: 0; 
+}
+
+#filter-container label {
+    color: #ffffff;
+    font-size: 16px;
+    margin-right: 10px;
+}
+
+#filter-container input[type="checkbox"] {
+    margin-right: 5px;
+    accent-color: #00FFFF; /* Color of the checkbox */
+}
+
+button#prevButton.nav-button {
+    margin-top: 50;
 }

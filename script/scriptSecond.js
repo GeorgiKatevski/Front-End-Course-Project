@@ -11,7 +11,6 @@ var firebaseConfig = {
 };
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
-firebase.analytics();
 
 const database = firebase.database();
 const houseRef = database.ref('houses');
@@ -23,7 +22,7 @@ const locationParam = new URLSearchParams(window.location.search).get('location'
 const minPriceParam = new URLSearchParams(window.location.search).get('minPrice');
 const maxPriceParam = new URLSearchParams(window.location.search).get('maxPrice');
 
-// Function to fetch and display houses with pagination and sorting
+// Fetch and display houses with filtering and sorting
 async function fetchAndDisplayHouses() {
   const snapshot = await houseRef.once('value');
   const houses = [];
@@ -31,7 +30,8 @@ async function fetchAndDisplayHouses() {
   snapshot.forEach(function(childSnapshot) {
       const houseData = childSnapshot.val();
 
-      if (checkSearchData(houseData)) {
+      // Check if the house matches the current filter criteria
+      if (checkSearchData(houseData) && checkFilterType(houseData)) {
           houses.push({
               id: childSnapshot.key,
               data: houseData
@@ -46,6 +46,31 @@ async function fetchAndDisplayHouses() {
   displayHouses(houses, totalPages);
 }
 
+// Check if the house matches the filter type
+function checkFilterType(houseData) {
+  const filterApartment = document.getElementById('filter-apartment').checked;
+  const filterHouse = document.getElementById('filter-house').checked;
+
+  // If no filters are selected, show all houses
+  if (!filterApartment && !filterHouse) {
+      return true;
+  }
+
+  // Match based on selected filters
+  if (filterApartment && houseData.type === 'Apartment') {
+      return true;
+  }
+  if (filterHouse && houseData.type === 'House') {
+      return true;
+  }
+
+  return false;
+}
+
+// Add event listeners for filter checkboxes
+document.getElementById('filter-apartment').addEventListener('change', fetchAndDisplayHouses);
+document.getElementById('filter-house').addEventListener('change', fetchAndDisplayHouses);
+
 // Function to sort houses based on the selected criterion
 function sortHouses(houses) {
   houses.sort((a, b) => {
@@ -53,7 +78,7 @@ function sortHouses(houses) {
           return a.data.title.localeCompare(b.data.title);
       } else if (sortBy === 'price') {
           return a.data.price - b.data.price;
-      } 
+      }
   });
 }
 

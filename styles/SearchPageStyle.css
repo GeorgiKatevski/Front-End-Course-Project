@@ -118,3 +118,53 @@ footer p {
 property-details-container {
     color: white;
 } 
+
+/* Chatbot Styles */
+#chatbot-container {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 300px;
+    background: rgba(0, 0, 0, 0.8);
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+    z-index: 1000;
+}
+
+#chat-window {
+    display: flex;
+    flex-direction: column;
+    height: 400px;
+}
+
+#chat-output {
+    flex-grow: 1;
+    padding: 10px;
+    overflow-y: auto;
+    color: white;
+    font-family: sans-serif;
+}
+
+#user-input {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-top: 1px solid #00FFFF;
+    background-color: #333;
+    color: white;
+}
+
+#send-button {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    background-color: #00FFFF;
+    color: black;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+#send-button:hover {
+    background-color: #00CED1;
+}

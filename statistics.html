@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Property Statistics</title>
+    <link rel="stylesheet" href="./styles/statistics.css">
+    <script src="https://www.gstatic.com/firebasejs/7.7.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.7.0/firebase.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <header>
+        
+            <h1>Real <span class="highlight">Properties</span></h1>
+            <nav>
+                <ul id="nav-menu">
+                    <li><a href="searchPage.html">Home</a></li>
+                    <li><a href="Contact.html">Contact</a></li>
+                    <li id="login-link"><a href="Login.html">Login</a></li>
+                    <li id="register-link"><a href="Register.html">Register</a></li>
+                    <li><a href="addHouse.html">Add Property</a></li>
+                    <li><a href="statistics.html">Statistics</a></li>
+                </ul>
+            </nav>
+        
+    </header>
+    
+    <main class="container">
+        <h2>Property Statistics</h2>
+        <canvas id="locationChart" width="400" height="200"></canvas>
+    </main>
+
+    <footer>
+       
+            <p>&copy; 2024 Real Property Company. All rights reserved.</p>
+            <div class="bottom-buttons">
+                <button id="contact">Contact</button>
+                <button id="help">Help</button>
+            
+        </div>
+    </footer>
+    <script src="script/statistics.js"></script>
+</body>
+</html>

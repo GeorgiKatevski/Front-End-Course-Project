@@ -1,0 +1,125 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+    background: linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.6)),url(../imgs/mansion1.jpg) repeat center center fixed; 
+    background-size: cover;
+    box-sizing: border-box;  
+    width: 100%;
+    color: white;
+}
+
+header {
+    background: rgba(0,0,0,.8);
+    box-shadow: 0 15px 25px rgba(0,0,0,.5);
+    padding-top: 30px;
+    margin: auto;
+    overflow: hidden;
+    border-bottom: #00FFFF solid 1px;
+}
+
+.container h1 {
+    color: white;
+    margin-bottom: 10px;
+}
+
+header span {
+    color: #00FFFF;
+}
+
+header ul {
+    float: right;
+}
+
+header ul li {
+    float: left;
+    margin: 5px;
+}
+
+header a {
+    text-decoration: none;
+    font-size: 16px;
+    color: #ffffff;
+    margin-bottom: 5px;
+}
+
+header a:hover {
+    color: #00FFFF;
+}
+
+#property-details-container {
+    padding: 20px;
+}
+
+footer {
+    position: relative;
+    width: 100%;
+    padding: 30px;
+    box-shadow: 0 -1px 5px rgba(0, 0, 0, 0.1); /* Optional: shadow for better visibility */
+}
+
+.bottom-buttons {
+    position: fixed; /* Keep the buttons fixed at the bottom */
+    bottom: 10px;
+    right: 50px;
+    display: flex;
+    justify-content: space-around; /* Space around buttons */
+    width: 100%; /* Ensure the buttons span the width */
+    max-width: 300px; /* Restrict maximum width */
+    margin: 0 auto; /* Center align the buttons */
+}
+
+.bottom-buttons button {
+    padding: 10px 20px;
+    background-color: #00FFFF; /* Button background color */
+    border: 1px solid #fff; /* Button border */
+    color: #fff; /* Button text color */
+    border-radius: 5px; /* Button border radius */
+    cursor: pointer; /* Cursor style on hover */
+    transition: background-color 0.3s; /* Smooth transition on hover */
+}
+
+.bottom-buttons button:hover {
+    background-color: #00CED1; /* Button background color on hover */
+}
+
+.copyright {
+    display: block;
+    position: relative;
+    text-align: center;
+    margin-top: 20px;
+    color: white;
+    font-size: 14px;
+}
+
+@media (max-width: 768px) {
+    .bottom-buttons {
+        position: relative;
+        bottom: auto;
+        right: auto;
+        width: 100%;
+        padding: 10px;
+    }
+
+    footer {
+        padding: 1.5rem; 
+        padding-bottom: 5rem; /* Increase padding at the bottom of the footer */
+    }
+
+    .copyright {
+        font-size: 0.75rem; /* Reduce font size for smaller screens */
+    }
+}
+
+@media (max-width: 480px) {
+    .bottom-buttons {
+        font-size: 0.75rem; /* Reduce font size for smaller screens */
+        padding: 0.5rem; /* Reduce padding to make the buttons smaller */
+        width: auto; /* Adjust width as needed */
+        height: auto;    
+    }
+
+    .copyright {
+        font-size: 0.65rem; /* Further reduce font size for very small screens */
+    }
+}

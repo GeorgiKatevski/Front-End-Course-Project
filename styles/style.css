@@ -110,7 +110,7 @@ input > div > label
 .auth-link  {
     line-height: 80%;
     font-size: 1rem;
-    color: #00FFFF ;
+
     text-decoration: none;
     margin-top: 1.75rem;
     border-radius: 15px;
@@ -124,4 +124,45 @@ input > div > label
     position:relative;
 }
 
+.container {
+    width: 80%;
+    margin: 20px auto;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+header {
+    background-color: rgba(0, 0, 0, 0.9);
+    color: #fff;
+    text-align: left;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 2.5em;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+li {
+    display: inline-block;
+    margin-right: 20px; 
+}
+
+a {
+    text-decoration: none;
+    color: #fff;
+}
+
+a:hover {
+    color: #00FFFF;
+}
+nav {
+    display: flex;
+    justify-content: right;
+}
 
