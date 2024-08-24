@@ -106,9 +106,6 @@ The **Real Estate Property Management Platform** is a web-based application desi
 4. **Testing and Optimization**: Test and optimize the application post-deployment.
 5. **Final Launch**: Finalize deployment and go live.
 
-## Getting Started
-
-To get started with the project, clone the repository and follow the setup instructions. Ensure that you have Firebase set up and configured according to the project's needs.
 
 ```bash
 git clone https://github.com/your-username/your-repo-name.git
