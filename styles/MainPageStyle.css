@@ -697,3 +697,9 @@ button:hover {
 button#prevButton.nav-button {
     margin-top: 50;
 }
+h1#contact_h {
+    font-family: sans-serif;
+}
+a {
+    color: white;
+}
