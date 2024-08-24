@@ -34,31 +34,31 @@ The **Real Estate Property Management Platform** is a web-based application desi
 ## Screenshots
 
 ### 1. Main Page (Property Listings)
-![Main Page - Property Listings](imgs/mainPage.jpeg)
+![Main Page - Property Listings](imgs/mainPage.jpg)
 *The main page where users can view all available property listings, complete with search and filtering options.*
 
 ### 2. Property Details Page
-![Property Details](imgs/DetailsPage.jpeg)
+![Property Details](imgs/DetailsPage.jpg)
 *Detailed view of a selected property, showcasing its title, description, price, location, and other relevant information.*
 
 ### 3. Search Page (with Chatbot)
-![Search Page - Chatbot Integration](imgs/SearchPage.jpeg)
+![Search Page - Chatbot Integration](imgs/SearchPage.jpg)
 *The search page featuring a chatbot that assists users in finding the right property by answering questions and providing suggestions.*
 
 ### 4. Add Property Page
-![Add Property](imgs/AddHousePage.jpeg)
+![Add Property](imgs/AddHousePage.jpg)
 *Page where users can add new properties to the platform by filling out a form with property details.*
 
 ### 5. Edit Property Page
-![Edit Property](imgs/EditDetailsPage.jpeg)
+![Edit Property](imgs/EditDetailsPage.jpg)
 *Page for editing existing property listings, allowing users to update details like price, description, and location.*
 
 ### 6. Contact Us Page
-![Contact Us](imgs/ContactPage.jpeg)
+![Contact Us](imgs/ContactPage.jpg)
 *Form where users can submit inquiries or feedback directly to the platform administrators.*
 
 ### 7. Statistics Page
-![Statistics](imgs/StatisticsPage.png)
+![Statistics](imgs/StatisticsPage.jpg)
 *Page displaying property statistics through various charts, helping users analyze trends and make informed decisions.*
 
 ## Non-Functional Requirements
