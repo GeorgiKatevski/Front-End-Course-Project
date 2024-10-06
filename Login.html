@@ -7,10 +7,22 @@
         <link rel="stylesheet" href=".\styles\style.css">
     </head>
     <body>
+        <header>
+            <div class="container">
+                <h1>Real <span>properties</span></h1>
+                <nav>
+                    <ul id="nav-menu">
+                        <li><a href="searchPage.html">Home</a></li>
+                        <li><a href="Contact.html">Contact us</a></li>
+                        <li><a href="statistics.html">Statistics</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
         <div class="box">
             <h2>Login</h2>
             <!--Указва къде трябва да се изпрати информацията.-->
-            <form action="index.html" id="login-form" method="POST">
+            <form action="searchPage.html" id="login-form" method="POST">
                 <div class="inputBox">  
                     <input type="text" id="Username" name="Username" required>
                     <label for="Username">Username </label>
@@ -26,10 +38,8 @@
              </form>
         </div>
         <script scr="https://www.gstatic.com/firebasejs/7.7.0/firebase-auth.js"></script>
-        <script src="https://www.gstatic.com/firebasejs/7.7.0/firebase.js"></script>
-   
-            
-       <script src="script/script.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/7.7.0/firebase.js"></script>     
+        <script src="script/loginScript.js"></script>
      </body>
      
 </html>

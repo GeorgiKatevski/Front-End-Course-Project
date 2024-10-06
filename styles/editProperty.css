@@ -1,0 +1,113 @@
+header{
+    background:rgba(0,0,0,.8);
+    box-shadow:0 15px 25px rgba(0,0,0,.5);
+    padding-top: 30px;
+    margin: auto;
+    overflow: hidden;
+    border-bottom: #00FFFF solid 1px;   
+}
+body
+{
+    margin:0;
+    padding:0;
+    font-family:sans-serif;
+    background: linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.6)),url(../imgs/mansion1.jpg) repeat center center fixed; 
+    background-size:cover;
+    box-sizing:border-box;  
+    width: 100%;
+}
+.container h1{
+    color:white;
+        margin-bottom: 10px;
+    }
+    ul{
+        margin: 0;
+        padding: 0;
+        list-style: none;
+        text-decoration: none;
+        font-family: sans-serif;
+        text-emphasis: none;
+        color:white;
+    }
+  
+    header ul{
+        float: right;
+    }
+    header ul li{
+        font-family: sans-serif;
+        float: left;
+        margin: 5px;
+        color:white;
+    }
+    header ul li a{
+        font-family: sans-serif;
+        color:white;
+        text-emphasis: none;
+        text-decoration: none;
+    }
+    li {
+        color:white;
+        background: none;
+    }
+    
+/* Form Container */
+#editPropertyForm {
+    display: flex;
+    flex-direction: column; /* Arrange elements in a column */
+    align-items: flex-start; /* Align elements to the start of the form */
+    width: 100%; /* Full width */
+    max-width: 500px; /* Maximum width for the form */
+    margin: auto; /* Center the form */
+    padding: 20px; /* Padding inside the form */
+    background: rgba(255, 255, 255, 0.1); /* Slightly transparent background */
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* Box shadow for a 3D effect */
+    color: white; /* Text color inside the form */
+}
+
+/* Labels */
+#editPropertyForm label {
+    margin-bottom: 10px; /* Space below labels */
+    font-size: 16px; /* Label font size */
+    color: #00FFFF; /* Label color */
+}
+
+/* Inputs and Textarea */
+#editPropertyForm input[type="text"],
+#editPropertyForm input[type="number"],
+#editPropertyForm textarea {
+    width: 100%; /* Full width inputs */
+    padding: 10px; /* Padding inside inputs */
+    margin-bottom: 20px; /* Space below inputs */
+    border: 1px solid #00FFFF; /* Border color */
+    border-radius: 4px; /* Rounded corners for inputs */
+    background: rgba(255, 255, 255, 0.2); /* Slightly transparent background */
+    color: white; /* Text color */
+    font-size: 16px; /* Font size */
+    box-sizing: border-box; /* Ensure padding and border are included in width */
+}
+
+/* Button */
+#editPropertyForm button[type="submit"] {
+    padding: 10px 20px; /* Padding inside the button */
+    background-color: #00FFFF; /* Button background color */
+    color: #000; /* Button text color */
+    border: none; /* Remove border */
+    border-radius: 5px; /* Rounded corners for the button */
+    cursor: pointer; /* Pointer cursor on hover */
+    transition: background-color 0.3s; /* Smooth background color transition */
+}
+
+#editPropertyForm button[type="submit"]:hover {
+    background-color: #00CED1; /* Button color on hover */
+}
+header span{
+    color:#00FFFF;
+}
+.container {
+   
+    font-family: sans-serif;
+}
+header a:hover{
+    color:#00FFFF;
+}

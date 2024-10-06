@@ -1,0 +1,60 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Real Properties</title>
+    <link rel="stylesheet" href="./styles/MainPageStyle.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Real <span>properties</span></h1>
+            <nav>
+                <ul id="nav-menu">
+                    <li><a href="searchPage.html">Search</a></li>
+                    <li id="login-link"><a href="Login.html">Login</a></li>
+                    <li id="register-link"><a href="Register.html">Register</a></li>
+                    <li><a href="addHouse.html">Add property</a></li>
+                    <li><a href="statistics.html">Statistics</a></li>
+                    <li><a href="Contact.html">Contact us</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <div id="sorting-container">
+        <div id="filter-container">
+            <label for="filter-type">Filter by:</label>
+            <input type="checkbox" id="filter-apartment" name="property-type" value="Apartment">
+            <label for="filter-apartment">Apartment</label>
+            <input type="checkbox" id="filter-house" name="property-type" value="House">
+            <label for="filter-house">House</label>
+        </div>
+        <label for="sort-select">Sort by:</label>
+        <select id="sort-select">
+            <option value="title">Title</option>
+            <option value="price">Price</option>
+        </select>
+    </div>
+    <div id="houses-container">
+        <!-- Houses will be dynamically inserted here -->
+    </div>
+    <div class="pagination">
+        <button id="prevPageBtn">Previous</button>
+        <span id="pageNumber">1</span>
+        <button id="nextPageBtn">Next</button>
+    </div>
+    <footer>
+        <div class="copyright">Copyright © 2024 RealProperty company. All rights reserved.</div>
+        <div class="bottom-buttons">
+            <button id="contact">Contact</button>
+            <button id="help">Help</button>
+        </div>
+    </footer>
+    <script src="https://www.gstatic.com/firebasejs/7.7.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.7.0/firebase.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.1.1/firebase-storage.js"></script>
+    <script src="script/scriptSecond.js"></script>
+    <script src="script/authStatusScript.js"></script>
+</body>
+</html>

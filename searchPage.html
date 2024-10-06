@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Properties</title>
+    <link rel="stylesheet" href="styles/SearchPageStyle.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Search Properties</h1>
+            <nav>
+                <ul id="nav-menu">
+                    <li><a href="mainPage.html">Home</a></li>
+                    <li id="login-link"><a href="Login.html">Login</a></li>
+                    <li id="register-link"><a href="Register.html">Register</a></li>
+                    <li><a href="addHouse.html">Add property</a></li>
+                    <li><a href="statistics.html">Statistics</a></li>
+                    <li><a href="Contact.html">Contact us</a></li>
+                </ul>
+                <div id="user-info"></div>
+            </nav>
+        </div>
+        <h2>Find Your Ideal Property</h2>
+    </header>
+    <div class="search-container">
+        <form action="mainPage.html" id="search-form" method="get">
+            <div class="input-container">
+                <input type="text" name="location" placeholder="Enter Location">
+                <input type="number" name="minPrice" placeholder="Min Price">
+                <input type="number" name="maxPrice" placeholder="Max Price">
+                <button type="submit">Search</button>
+            </div>
+        </form>
+    </div>
+    <!-- Chatbot Container -->
+    <div id="chatbot-container">
+        <div id="chat-window">
+            <div id="chat-output"></div>
+            <input type="text" id="user-input" placeholder="Ask me anything..." autocomplete="off">
+            <button id="send-button">Send</button>
+        </div>
+    </div>
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Real Property company. All Rights Reserved.</p>
+        </div>
+    </footer>
+    <!-- Firebase Scripts -->
+    <script src="https://www.gstatic.com/firebasejs/7.7.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.7.0/firebase.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.1.1/firebase-storage.js"></script>
+    <!-- Chatbot Script -->
+    <script src="script/chatbot.js"></script>
+    <script src="script/authStatusScript.js"></script>
+</body>
+</html>

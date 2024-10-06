@@ -1,0 +1,56 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Property</title>
+    <link rel="stylesheet" href=".\styles\editProperty.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Edit <span>Property</span></h1>
+            <nav>
+                <ul>
+                    <li><a href="mainPage.html">Home</a></li>
+                    <li><a href="Contact.html">Contact</a></li>
+                    <li><a href="addHouse.html">Add property</a></li>
+                    <li><a href="searchPage.html">Search</a></li>
+                    <li><a href="statistics.html">Statistics</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container">
+        <form id="editPropertyForm">
+            <label for="title">Title:</label>
+            <input type="text" id="title" name="title" required>
+            
+            <label for="description">Description:</label>
+            <textarea id="description" name="description" required></textarea>
+            
+            <label for="price">Price:</label>
+            <input type="number" id="price" name="price" required>
+            
+            <label for="location">Location:</label>
+            <input type="text" id="location" name="location" required>
+            
+            <label for="type">Type:</label>
+            <input type="text" id="type" name="type" required>
+            
+            <label for="area">Area:</label>
+            <input type="number" id="area" name="area" required>
+            
+            <button type="submit">Save Changes</button>
+        </form>
+    </div>
+    <footer>
+        <div class="copyright">Copyright © 2024 RealProperty company. All rights reserved.</div>
+    </footer>
+    <script src="https://www.gstatic.com/firebasejs/7.7.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.7.0/firebase.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.1.1/firebase-storage.js"></script>
+    <script src="script/editPropertyScript.js"></script>
+</body>
+</html>

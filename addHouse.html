@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add House for Sale</title>
+       <link rel="stylesheet" href=".\styles\addHouse.css">
+</head>
+<body>
+    <div class="container">
+        <h2>Add House for Sale</h2>
+        <form action="mainPage.html" id="house-form" method="POST">
+            <label for="title">Title:</label>
+            <input type="text" id="title" name="title" required>
+            <label for="description">Description:</label>
+            <textarea id="description" name="description" rows="4" required></textarea>
+            <label for="price">Price:</label>
+            <input type="text" id="price" name="price" required>
+            <label for="location">Location:</label>
+            <input type="text" id="location" name="location" required>
+            <label for="type">Type:</label>
+            <input type="text" id="type" name="type" required>
+            <label for="area">Aresa:</label>
+            <input type="text" id="area" name="area" required>
+            <input type="file" id="image" name="image" accept="image/*" multiple>
+            <input type="submit" value="Submit">
+            <div id="alert">The property is added successfully</div>
+        </form>    
+    </div>
+    <script scr="https://www.gstatic.com/firebasejs/7.7.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.7.0/firebase.js"></script>
+    <script src="script\script.js"></script>
+</body>
+</html>

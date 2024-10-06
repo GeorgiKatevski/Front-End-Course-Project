@@ -1,0 +1,126 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Arial', sans-serif;
+    background: url('../imgs/mansion1.jpg') center center fixed; 
+    background-size: cover;
+    color: #fff;
+    box-sizing: border-box;
+}
+
+.container {
+    width: 80%;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: rgba(0, 0, 0, 0.8);
+    border-radius: 10px;
+}
+
+header {
+    background-color: rgba(0, 0, 0, 0.9);
+    color: #fff;
+    text-align: left;
+    padding: 15px 0;
+}
+
+footer {
+          /* Fixes the footer at the bottom */
+    bottom: 0;            /* Aligns the footer to the bottom of the page */
+    left: 0;              /* Ensures the footer spans the full width from left */
+    width: 100%;          /* Sets the footer to span the full width of the page */
+    background-color: rgba(0, 0, 0, 0.8); /* Background color with some transparency */
+    color: #fff;          /* White text color */
+    text-align: right;    /* Aligns the text to the right */
+    padding: 10px 20px;   /* Adds padding around the text */
+    box-sizing: border-box; /* Ensures padding doesn't affect width */
+}
+
+header h1 {
+    margin: 0;
+    font-size: 2.5em;
+}
+
+header .highlight {
+    color: #00FFFF;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+li {
+    display: inline-block;
+    margin-right: 20px;
+}
+
+a {
+    text-decoration: none;
+    color: #fff;
+}
+
+a:hover {
+    color: #00FFFF;
+}
+
+button {
+    background: none;
+    border: none;
+    font-size: 16px;
+    color: #fff;
+    cursor: pointer;
+    transition: color 0.3s;
+}
+
+button:hover {
+    color: #00FFFF;
+}
+
+nav {
+    display: flex;
+    justify-content: center;
+    padding: 15px 0;
+}
+
+footer .bottom-buttons {
+    margin-top: 10px;
+}
+
+main h2 {
+    color: #00FFFF;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+#locationChart {
+    padding: 20px;
+    border-radius: 10px;
+   
+}
+
+canvas {
+    background-color: rgba(255, 255, 255, 0.1); /* Chart background */
+    border-radius: 10px;
+    padding: 20px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .container {
+        width: 90%;
+    }
+
+    header h1 {
+        font-size: 2em;
+    }
+
+    li {
+        display: block;
+        margin: 10px 0;
+    }
+
+    nav {
+        flex-direction: column;
+    }
+}
